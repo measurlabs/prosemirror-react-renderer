@@ -1,0 +1,6 @@
+{
+  "extends": ["measurlabs", "measurlabs/react"],
+  "parserOptions": {
+    "project": "tsconfig.json"
+  }
+}
