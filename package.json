@@ -26,6 +26,7 @@
     "format": "prettier '**/*.{m?js,ts,tsx}' --write",
     "lint": "eslint '**/*.{m?js,ts,tsx}'",
     "prebuild": "npm run clean",
+    "prepare": "npm run build",
     "test": "vitest --run"
   },
   "peerDependencies": {
