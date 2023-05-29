@@ -13,29 +13,22 @@ export type Node = {
   text?: string;
 };
 
-type NodeMapping = Record<
-  string,
-  React.FunctionComponent<Record<string, unknown>>
->;
-type MarkMapping = Record<
-  string,
-  React.FunctionComponent<Record<string, unknown>>
->;
+type Mapping = Record<string, React.ElementType<Record<string, unknown>>>;
 
 interface Props {
   children?: Node | null;
-  nodes?: NodeMapping;
-  marks?: MarkMapping;
+  nodes?: Mapping;
+  marks?: Mapping;
   renderText?(text: string): React.ReactNode;
 }
 
-export const defaultMarkMappings: MarkMapping = {
+export const defaultMarkMappings: Mapping = {
   bold: (props) => <b {...props} />,
   italic: (props) => <em {...props} />,
   link: (props) => <a {...props} target="_blank" rel="noopener noreferrer" />,
   underline: (props) => <u {...props} />,
 };
-export const defaultNodeMappings: NodeMapping = {
+export const defaultNodeMappings: Mapping = {
   bulletList: (props) => <ul {...props} />,
   doc: (props) => <div {...props} />,
   listItem: (props) => <li {...props} />,
