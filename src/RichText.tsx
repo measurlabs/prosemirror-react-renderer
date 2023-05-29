@@ -26,6 +26,7 @@ interface Props {
   children?: Node | null;
   nodes?: NodeMapping;
   marks?: MarkMapping;
+  renderText?(text: string): React.ReactNode;
 }
 
 export const defaultMarkMappings: MarkMapping = {
@@ -46,6 +47,7 @@ export const RichText = ({
   children,
   marks = defaultMarkMappings,
   nodes = defaultNodeMappings,
+  renderText,
 }: Props) => {
   if (!children) {
     return null;
@@ -74,7 +76,7 @@ export const RichText = ({
     );
   }
   if ("text" in children && children.text) {
-    return <C>{children.text}</C>;
+    return <C>{renderText?.(children.text) ?? children.text}</C>;
   }
   return null;
 };
