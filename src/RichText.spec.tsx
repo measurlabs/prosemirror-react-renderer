@@ -94,3 +94,34 @@ it("renders custom mappings", () => {
       .toJSON()
   );
 });
+
+it("renders remaps class attr", () => {
+  expect(
+    renderer
+      .create(
+        <RichText>
+          {{
+            content: [
+              {
+                attrs: { class: "paragraph" },
+                content: [{ text: "hello world!", type: "text" }],
+                type: "paragraph",
+              },
+            ],
+            type: "doc",
+          }}
+        </RichText>
+      )
+      .toJSON()
+  ).toEqual(
+    renderer
+      .create(
+        <div>
+          <p className="paragraph">
+            hello world!
+          </p>
+        </div>
+      )
+      .toJSON()
+  );
+});

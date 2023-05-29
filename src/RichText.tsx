@@ -36,6 +36,14 @@ export const defaultNodeMappings: Mapping = {
   paragraph: (props) => <p {...props} />,
 };
 
+const getAttrs = ({ attrs }: { attrs?: Record<string, unknown> }) => {
+  if (attrs && "class" in attrs) {
+    const { class: className, ...rest } = attrs;
+    return { ...rest, className };
+  }
+  return attrs;
+};
+
 export const RichText = ({
   children,
   marks = defaultMarkMappings,
@@ -49,7 +57,7 @@ export const RichText = ({
   if (mark) {
     const C = (mark.type && marks[mark.type]) || React.Fragment;
     return (
-      <C {...mark.attrs}>
+      <C {...getAttrs(mark)}>
         <RichText nodes={nodes} marks={marks}>
           {{ ...children, marks: rest }}
         </RichText>
@@ -59,7 +67,7 @@ export const RichText = ({
   const C = (children.type && nodes[children.type]) || React.Fragment;
   if ("content" in children && children.content) {
     return (
-      <C>
+      <C {...getAttrs(children)}>
         {children?.content.map((child, i) => (
           <RichText key={i} nodes={nodes} marks={marks}>
             {child}
