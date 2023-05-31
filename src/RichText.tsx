@@ -22,19 +22,19 @@ interface Props {
   renderText?(text: string): React.ReactNode;
 }
 
-export const defaultMarkMappings: Mapping = {
+export const defaultMarkMappings = {
   bold: (props) => <b {...props} />,
   italic: (props) => <em {...props} />,
   link: (props) => <a {...props} target="_blank" rel="noopener noreferrer" />,
   underline: (props) => <u {...props} />,
-};
-export const defaultNodeMappings: Mapping = {
+} satisfies Mapping;
+export const defaultNodeMappings = {
   bulletList: (props) => <ul {...props} />,
   doc: (props) => <div {...props} />,
   listItem: (props) => <li {...props} />,
   orderedList: (props) => <ol {...props} />,
   paragraph: (props) => <p {...props} />,
-};
+} satisfies Mapping;
 
 const getAttrs = ({ attrs }: { attrs?: Record<string, unknown> }) => {
   if (attrs && "class" in attrs) {
