@@ -4,7 +4,13 @@ Customizable and lightweight library for rendering ProseMirror compatible JSON s
 
 ## Usage
 
-```tsx
+```sh
+npm install "prosemirror-react-renderer"
+```
+
+```ts
+import { RichText } from "prosemirror-react-renderer";
+
 <RichText>
   {{
     content: [
@@ -25,5 +31,13 @@ Customizable and lightweight library for rendering ProseMirror compatible JSON s
     ],
     type: "doc",
   }}
-</RichText>
+</RichText>;
 ```
+
+### Props
+
+| Prop       | Description                                                    | Default value                  |
+| ---------- | -------------------------------------------------------------- | ------------------------------ |
+| marks      | Lookup for rendering marks. Uses marks `type` property as key. | defaultMarkMappings (exported) |
+| nodes      | Lookup for rendering nodes. Uses `type` property as key.       | defaultNodeMappings (exported) |
+| renderText | Function allowing custom mapping of plain text values          | -                              |
