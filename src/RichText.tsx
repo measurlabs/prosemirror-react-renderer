@@ -58,7 +58,7 @@ export const RichText = ({
     const C = (mark.type && marks[mark.type]) || React.Fragment;
     return (
       <C {...getAttrs(mark)}>
-        <RichText nodes={nodes} marks={marks}>
+        <RichText nodes={nodes} marks={marks} renderText={renderText}>
           {{ ...children, marks: rest }}
         </RichText>
       </C>
@@ -69,7 +69,7 @@ export const RichText = ({
     return (
       <C {...getAttrs(children)}>
         {children?.content.map((child, i) => (
-          <RichText key={i} nodes={nodes} marks={marks}>
+          <RichText key={i} nodes={nodes} marks={marks} renderText={renderText}>
             {child}
           </RichText>
         ))}
