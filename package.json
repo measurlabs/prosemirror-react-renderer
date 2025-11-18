@@ -13,7 +13,7 @@
     "rollup-plugin-typescript2": "^0.34.1",
     "tslib": "^2.5.2",
     "typescript": "^5.0.4",
-    "vitest": "^0.31.1"
+    "vitest": "^4.0.10"
   },
   "module": "dist/index.esm.js",
   "name": "prosemirror-react-renderer",
